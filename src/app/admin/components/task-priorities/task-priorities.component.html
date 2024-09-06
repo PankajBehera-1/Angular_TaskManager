@@ -1,0 +1,50 @@
+<div>
+    <form #taskPriorityForm="ngForm" (ngSubmit)="isEditing ? updateTaskPriority() : addTaskPriority(taskPriorityForm)">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="taskPriorityId">ID:</label>
+                    </td>
+                    <td>
+                        <input id="taskPriorityId" name="taskPriorityId"
+                            [(ngModel)]="selectedTaskPriority.taskPriorityId" [disabled]="isEditing" required />
+                    </td>
+
+                    <td>
+                        <label for="taskPriorityName">Name:</label>
+                    </td>
+                    <td>
+                        <input id="taskPriorityName" name="taskPriorityName"
+                            [(ngModel)]="selectedTaskPriority.taskPriorityName" required />
+                    </td>
+                    <td colspan="2">
+                        <button type="submit">{{ isEditing ? 'Update' : 'Add' }} Task Priority</button>
+                        <button *ngIf="isEditing" type="button" (click)="cancelEdit()">Cancel</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <!-- Table of task priorities -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let taskPriority of taskPriorities">
+                <td>{{ taskPriority.taskPriorityId }}</td>
+                <td>{{ taskPriority.taskPriorityName }}</td>
+                <td>
+                    <button (click)="selectTaskPriority(taskPriority)">Edit</button>
+                    <button (click)="deleteTaskPriority(taskPriority.taskPriorityId)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,32 @@
+<section>
+    <div class="container">
+        <div class="main">
+
+            <div style="margin-bottom: 10px">
+                <input #locationInput type="text" placeholder="Enter location name" />
+                <button (click)="addLocation(locationInput.value); locationInput.value=''" class="addLocation">Add
+                    Location</button>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let location of clientLocations">
+                        <td>{{ location.name }}</td>
+                        <td>
+                            <button (click)="deleteLocation(location.id)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d32668679.020964004!2d51.06119476408358!3d-1.787948897470988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1724828158126!5m2!1sen!2sin" width="700" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</section>

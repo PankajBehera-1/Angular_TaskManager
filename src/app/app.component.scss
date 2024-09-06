@@ -1,0 +1,78 @@
+
+.element {
+  overflow: scroll;
+  scrollbar-width: none; 
+}
+.element::-webkit-scrollbar {
+  display: none;
+}
+
+
+.navbar {
+    padding: 0.5rem 1rem;
+    box-shadow: 0px 4px 15px 0px gray;
+  }
+  
+  .navbar-brand {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .navbar-brand i{
+    color: rgb(0, 0, 0);
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .navbar-nav .nav-link.active {
+    background-color: #0f6bc7;
+    border-radius: 0.25rem;
+  }
+  
+  .navbar-toggler {
+    border: none;
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='currentColor' stroke-width='2' d='M5 7h20M5 15h20M5 23h20'/%3E%3C/svg%3E");
+    fill: blue;
+  }
+  
+  /* Search Form Styles */
+  .form-control {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+  }
+  
+  .btn-outline-light {
+    color: #ffffff;
+    border-color: #ffffff;
+  }
+  
+  .btn-outline-light:hover {
+    background-color: #ffffff;
+    color: #343a40;
+  }
+  
+  /* Logout Icon Styles */
+  .nav-link i {
+    font-size: 1.2rem;
+  }
+  
+  .nav-link.ms-2 {
+    margin-left: 0.5rem;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 992px) {
+    .navbar-nav .nav-link {
+      font-size: 0.875rem;
+    }
+  
+    .form-control {
+      font-size: 0.875rem;
+    }
+  }
+  

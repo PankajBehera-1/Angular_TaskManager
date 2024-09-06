@@ -1,0 +1,100 @@
+.filter-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px; 
+}
+
+.filter-container .btn {
+  margin-right: 10px;
+}
+
+.filter-fields {
+  display: flex;
+  gap: 10px; 
+}
+
+.filter-fields .form-control {
+  flex: 1; 
+  max-width: 200px;
+}
+
+
+
+.table-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+tr:hover{
+  background-color: #e7e9ea;
+}
+.centered {
+  text-align: center;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 0 4px;
+  font-size: 16px;
+  
+}
+
+.action-btn i {
+  font-size: 14px;
+
+}
+
+.action-btn:hover {
+  color: #0056b3;
+  scale: 1.1;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.pagination-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 10px;
+  margin: 0 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.pagination-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #d9534f;
+  text-align: center;
+  margin: 10px 0;
+}

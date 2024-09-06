@@ -1,0 +1,104 @@
+<form [formGroup]="newTaskForm" novalidate>
+    <div class="form-container">
+      <h2 class="text-center mb-4">Create a New Task</h2>
+      <div class="row">
+        <div class="col-12">
+          <div class="form-group">
+            <label for="taskName" class="text-info">Task Name:</label>
+            <input type="text" class="form-control" id="taskName" placeholder="Task Name" autofocus formControlName="taskName">
+            <div class="invalid-feedback d-block" *ngIf="newTaskForm.get('taskName')?.invalid && 
+              (newTaskForm.get('taskName')?.dirty || newTaskForm.get('taskName')?.touched) && 
+              newTaskForm.get('taskName')?.errors?.['required']">
+              Task name can't be blank
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-12">
+          <div class="form-group">
+            <label for="description" class="text-info">Description</label>
+            <textarea class="form-control" id="description" placeholder="Description" formControlName="description"></textarea>
+          </div>
+        </div>
+  
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label for="projectID" class="text-info">Project:</label>
+            <ng-select [items]="projects | async"
+                       bindLabel="projectName"
+                       bindValue="projectID"
+                       placeholder="Please select"
+                       formControlName="projectID"
+                       class="form-control"
+                       [ngClass]="{'is-invalid': newTaskForm.get('projectID')?.invalid && 
+                                    (newTaskForm.get('projectID')?.dirty || newTaskForm.get('projectID')?.touched)}" style="border: none;">
+            </ng-select>
+            <div class="invalid-feedback d-block" *ngIf="newTaskForm.get('projectID')?.invalid && 
+              (newTaskForm.get('projectID')?.dirty || newTaskForm.get('projectID')?.touched) && 
+              newTaskForm.get('projectID')?.errors?.['required']">
+              Please select a project
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="assignedTo" class="text-info">Assigned To:</label>
+            <ng-select [items]="employees"
+                       bindLabel="userName"
+                       bindValue="id"
+                       placeholder="Please select"
+                       formControlName="assignedTo"
+                       class="form-control"
+                       [ngClass]="{'is-invalid': newTaskForm.get('assignedTo')?.invalid && 
+                                    (newTaskForm.get('assignedTo')?.dirty || newTaskForm.get('assignedTo')?.touched)}" style="border: none;">
+            </ng-select>
+            <div class="invalid-feedback d-block" *ngIf="newTaskForm.get('assignedTo')?.invalid && 
+              (newTaskForm.get('assignedTo')?.dirty || newTaskForm.get('assignedTo')?.touched) && 
+              newTaskForm.get('assignedTo')?.errors?.['required']">
+              Please select an employee
+            </div>
+          </div>
+          
+        </div>
+  
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label for="taskPriorityID" class="text-info">Priority:</label>
+            <ng-select [items]="taskPriorities | async"
+                       bindLabel="taskPriorityName"
+                       bindValue="taskPriorityId"
+                       placeholder="Please select"
+                       formControlName="taskPriorityID"
+                       class="form-control"
+                       [ngClass]="{'is-invalid': newTaskForm.get('taskPriorityID')?.invalid && 
+                                    (newTaskForm.get('taskPriorityID')?.dirty || newTaskForm.get('taskPriorityID')?.touched)}" style="border: none;">
+            </ng-select>
+            <div class="invalid-feedback d-block" *ngIf="newTaskForm.get('taskPriorityID')?.invalid && 
+              (newTaskForm.get('taskPriorityID')?.dirty || newTaskForm.get('taskPriorityID')?.touched) && 
+              newTaskForm.get('taskPriorityID')?.errors?.['required']">
+              Please select a priority
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="taskStatus" class="text-info">Status:</label>
+            <input type="text" class="form-control" id="taskStatus" placeholder="Task Status" formControlName="taskStatus">
+            <div class="invalid-feedback d-block" *ngIf="newTaskForm.get('taskStatus')?.invalid && 
+              (newTaskForm.get('taskStatus')?.dirty || newTaskForm.get('taskStatus')?.touched) && 
+              newTaskForm.get('taskStatus')?.errors?.['required']">
+              Task status can't be blank
+            </div>
+          </div>
+        </div>
+  
+        <!-- Button Row -->
+        <div class="col-12 text-center mt-4">
+          <div class="button-group">
+            <button class="btn btn-success btn-lg" (click)="onCreateTaskClick($event)">Create Task</button>
+            <!-- <a class="" [routerLink]="['/Employee', 'tasks']">Back</a> -->
+            <button [routerLink]="['/Employee', 'tasks']" class="backBtn">Back</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  

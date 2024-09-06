@@ -1,0 +1,54 @@
+<div class="card">
+    <div class="card-header">
+        <div>
+
+
+            <a [routerLink]="['/admin','projects','view',project.projectID]" class="projectName">
+                #{{project.projectID}}
+                {{project.projectName}}
+            </a>
+
+        </div>
+
+        <ng-content></ng-content>
+
+
+    </div>
+    <div class="card-body">
+        <table class="table borderless">
+            <tr>
+                <th>Date of start</th>
+                <th>{{project.projectOfStart}}</th>
+            </tr>
+            <tr>
+                <th>Team Size</th>
+                <th>
+                    <span>{{project.teamSize}}</span>
+                    <!-- <span>{{project.teamSize | numberToWord}}</span> -->
+                </th>
+            </tr>
+            <tr>
+                <th>Client Location</th>
+                <th>{{project.clientLocationName}}</th>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <th>{{project.status}}</th>
+            </tr>
+        </table>
+    </div>
+    <div class="card-footer bg-transparent border-success">
+        <div class="action">
+
+
+            <button type="button" (click)="onEditClick($event,i)" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#exampleModaledit">
+                <i class="fa-solid fa-pen-to-square" style="position: relative;left: 4px;"></i>
+            </button>
+            <button type="button" (click)="onDeleteClick($event,i)" class="btn" data-bs-toggle="modal"
+                data-bs-target="#exampleModaldelete" style="background: red; color: white;">
+                <i class="fa-solid fa-trash"></i>
+            </button>
+        </div>
+    </div>
+</div>

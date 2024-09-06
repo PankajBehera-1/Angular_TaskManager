@@ -1,0 +1,70 @@
+<h3>Approval Config</h3>
+<hr>
+<form [formGroup]="form">
+    <section formArrayName="rules" style="display: flex; flex-direction: column;">
+        <div *ngFor="let rule of rules.controls; let ruleIndex = index" [formGroupName]="ruleIndex">
+            <section style="display: flex; justify-content: space-between; align-items: center;">
+                <label for="cities">When</label>
+                <ng-select [items]="cities" bindLabel="name" bindValue="id" [multiple]="true"
+                    placeholder="Select cities" formControlName="cities"  id="cities" name="cities"
+                    style="border: none; display: flex;flex: 1; ">
+                </ng-select>
+            </section>
+
+            <section class="main" style="display: flex;" class="form-group">
+                <div formArrayName="approvers">
+                    <div *ngFor="let approver of getApprovers(ruleIndex).controls; let approverIndex = index"
+                        [formGroupName]="approverIndex" class="approver-group">
+                        <div class="form-group">
+                            <label for="threshold">Request more than</label>
+                            <input type="number" id="threshold" name="threshold" formControlName="threshold"
+                                class="form-control" placeholder="Enter amount">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="approvers">Asset value needs approval from</label>
+                            <ng-select [items]="approvalUsers" bindLabel="name" bindValue="name" 
+                            placeholder="Select Approver" id="approvers" formControlName="approver">
+                               
+                            
+                            <ng-template ng-label-tmp let-item="item">
+                                <img height="15" width="15" [src]="item.avatar" alt="{{item.name}}'s avatar" />
+                                <b>{{item.name}}</b>
+                                <p style="font-size: 10px;">{{item.email}}</p>
+                            </ng-template>
+                            <ng-template ng-option-tmp let-item="item">
+                                <img height="15" width="15" [src]="item.avatar" alt="{{item.name}}'s avatar" />
+                                <b>{{item.name}}</b>
+                                <p style="font-size: 10px;">{{item.email}}</p>
+                            </ng-template>
+                            </ng-select>
+                        </div>
+
+                        <div style="display: flex; justify-content: space-between;">
+                            <button class="btn btn-danger" type="button"
+                                (click)="removeApprover(ruleIndex, approverIndex)">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                            <button class="btn btn-add" type="button" (click)="addApprover(ruleIndex)">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- <div style="display: flex; justify-content: space-between;">
+                <button class="btn btn-danger" type="button" (click)="removeRule(ruleIndex)">
+                    <i class="fa-solid fa-trash"></i> Remove Rule
+                </button>
+            </div> -->
+            <hr />
+        </div>
+    </section>
+
+    <section>
+        <button class="btn btn-add" type="button" (click)="addRule()">
+            <i class="fa-solid fa-plus"></i> Add More Rules
+        </button>
+    </section>
+</form>

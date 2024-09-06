@@ -1,0 +1,168 @@
+@import "../../../../../node_modules/@ng-select/ng-select/themes/default.theme.css";
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h3 {
+    margin: 20px 0;
+    font-size: 24px;
+}
+
+hr {
+    margin: 20px 0;
+}
+
+form {
+    
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+
+section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+
+label {
+    font-size: 16px;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+#approvers{
+    border: none;
+    width: 30rem;
+}
+.form-control {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    box-sizing: border-box;
+    width: 20rem;
+    height: 35px;
+   
+}
+
+
+
+.form-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.approver-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-add {
+    background-color: #28a745;
+    color: white;
+}
+
+.approver-group img {
+    border-radius: 50%;
+}
+
+.approver-group button {
+    margin-left: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .form-group, .main, .approver-group {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 992px) {
+    h3 {
+        font-size: 20px;
+    }
+
+    .btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .form-control, #approvers {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .form {
+        padding: 10px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    .form-control {
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .main, .approver-group {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 576px) {
+    h3 {
+        font-size: 16px;
+    }
+
+    .form {
+        padding: 5px;
+    }
+
+    .form-control, #approvers {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+
+    .form-group, .main, .approver-group {
+        gap: 10px;
+    }
+}

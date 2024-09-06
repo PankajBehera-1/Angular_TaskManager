@@ -1,0 +1,42 @@
+<div class="headerImage">
+    <img src="../../../assets/projectImage.jpg" alt="" srcset="">
+</div>
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            {{project.projectID}} - {{project.projectName}}
+        </div>
+        <ng-content></ng-content>
+    </div>
+    <!-- {{project|json}} -->
+    <div class="card-body">
+        <table class="info-table">
+            <tr>
+                <th>Date of Start</th>
+                <td>{{project.projectOfStart}}</td>
+            </tr>
+            <tr>
+                <th>Team Size</th>
+                <td>
+                    <span class="team-size-number">{{project.teamSize}}</span>
+                    <span class="team-size-word">{{project.teamSize | numberToWord}}</span>
+                </td>
+            </tr>
+            <tr>
+                <th>Client Location</th>
+                <td>{{project.clientLocationName}}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{project.status}}</td>
+            </tr>
+            <tr>
+                <th>Active</th>
+                <td>{{project.active}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="card-footer">
+        <a [routerLink]="['/admin','projects']" class="back-link">Back</a>
+    </div>
+</div>

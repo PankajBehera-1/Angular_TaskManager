@@ -1,0 +1,92 @@
+.element {
+    overflow: scroll;
+    scrollbar-width: none; 
+  }
+  .element::-webkit-scrollbar {
+    display: none;
+  }
+  
+.headerImage{
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.headerImage img{
+    height: 90%;
+    width: 70%;
+}
+
+.card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 16px;
+    padding: 16px;
+    position: relative;
+    top: -30px;
+}
+
+.card-header {
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 16px;
+}
+
+.card-title {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #333333;
+}
+
+.card-body {
+    padding: 16px;
+}
+
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.info-table th {
+    text-align: left;
+    padding: 8px;
+    background-color: #f1f1f1;
+    color: #333333;
+}
+
+.info-table td {
+    padding: 8px;
+    color: #555555;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.team-size-number {
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+.team-size-word {
+    color: #007bff;
+}
+
+.card-footer {
+    background-color: #f9f9f9;
+    border-top: 1px solid #e0e0e0;
+    padding: 16px;
+    text-align: right;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}

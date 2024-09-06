@@ -1,0 +1,51 @@
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb" style="margin-top: 10px;">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/Employee','tasks']">Task Page</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Update Task</li>
+    </ol>
+  </nav>
+  
+
+<div class="update-task-status-container">
+    <div class="image-section">
+      <img src="../../../../assets/update.avif" alt="Update Task Image" />
+    </div>
+  
+    <div class="form-section">
+      <form [formGroup]="updateTaskForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="taskID">Task ID:</label>
+          <input id="taskID" formControlName="taskID" type="text" />
+          <div *ngIf="updateTaskForm.get('taskID')?.invalid && (updateTaskForm.get('taskID')?.dirty || updateTaskForm.get('taskID')?.touched)">
+            <small *ngIf="updateTaskForm.get('taskID')?.errors?.['required']" style="color: red;">Task ID is required.</small>
+            <small *ngIf="updateTaskForm.get('taskID')?.errors?.['pattern']" style="color: red;">Task ID must be a positive integer.</small>
+          </div>
+        </div>
+  
+        <div>
+          <label for="currentStatus">Current Status:</label>
+          <ng-select 
+            id="currentStatus"
+            formControlName="currentStatus"
+            [items]="statusOptions"
+            bindLabel="name"
+            bindValue="value"
+            placeholder="Select status">
+          </ng-select>
+          <div *ngIf="updateTaskForm.get('currentStatus')?.invalid && (updateTaskForm.get('currentStatus')?.dirty || updateTaskForm.get('currentStatus')?.touched)">
+            <small *ngIf="updateTaskForm.get('currentStatus')?.errors?.['required']" style="color: red;">Current Status is required.</small>
+          </div>
+        </div>
+  
+        <button type="submit" [disabled]="updateTaskForm.invalid">Update Status</button>
+  
+        <div *ngIf="successMessage" class="success-message">
+          {{ successMessage }}
+        </div>
+  
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+      </form>
+    </div>
+  </div>

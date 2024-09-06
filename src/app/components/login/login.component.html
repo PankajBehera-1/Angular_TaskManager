@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<body>
+    <div class="login-form">
+        <div class="text">
+          LOGIN
+        </div>
+        <form>
+          <div class="field">
+            <div class="fas"><i class="fa-solid fa-user"></i></div>
+            <input type="text" placeholder="Username" [(ngModel)]="loginViewModel.UserName" [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="field">
+            <div class="fas"><i class="fa-solid fa-lock"></i></div>
+            <input type="password" placeholder="Password" [(ngModel)]="loginViewModel.Password" [ngModelOptions]="{standalone: true}">
+          </div>
+          <span class="text-danger">{{loginError}}</span>
+          <button (click)="onLoginClick($event)">LOGIN</button>
+          <!-- <div *appRepeater="let i">{{i}}</div> -->
+          <div class="link">
+            Not a member?
+             <a  routerLink="/signup">Signup</a>
+          </div>
+        </form>
+      </div>
+      
+</body>

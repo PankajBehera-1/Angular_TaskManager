@@ -1,0 +1,109 @@
+<div class="table-container">
+  <div class="filter-container">
+    <button (click)="openCreateModal()" class="btn btn-primary">Create Country</button>
+
+    <div class="filter-fields">
+      <input type="number" [(ngModel)]="searchID" (ngModelChange)="onSearch()" placeholder="Filter by ID" class="form-control" />
+      <input type="text" [(ngModel)]="searchName" (ngModelChange)="onSearch()" placeholder="Filter by Name" class="form-control" />
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Country ID</th>
+        <th>Country Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let country of pagedCountries">
+        <td class="centered">{{ country.countryID }}</td>
+        <td class="centered">{{ country.CountryName }}</td>
+        <td class="centered">
+          <button (click)="viewDetails(country.countryID)" class="action-btn" aria-label="View details">
+            <i class="fa-solid fa-eye" style="color: rgb(33, 77, 236);"></i>
+          </button>
+          <button (click)="updateClick(editModal, country.countryID)" class="action-btn" aria-label="Edit">
+            <i class="fa-solid fa-pen-to-square" style="color: rgb(0, 216, 29);"></i>
+          </button>
+          <button (click)="deleteClick(deleteModal, country.countryID)" class="action-btn" aria-label="Delete">
+            <i class="fa-solid fa-trash" style="color: red;"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1" class="pagination-btn" aria-label="Previous page">
+      <i class="fa-solid fa-backward"></i>
+    </button>
+    <span>Page {{ currentPage }} of {{ totalPages() }}</span>
+    <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage * itemsPerPage >= totalItems" class="pagination-btn" aria-label="Next page">
+      <i class="fa-solid fa-forward"></i>
+    </button>
+  </div>
+
+  <div *ngIf="message" class="error-message">
+    {{ message }}
+  </div>
+</div>
+
+<!-- Edit Modal Template -->
+<ng-template #editModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Edit Country</h5>
+    <button type="button" class="btn-close" (click)="modal.dismiss('Cross click')" aria-label="Close"></button>
+  </div>
+  <div class="modal-body" *ngIf="selectedCountry">
+    <form (ngSubmit)="onSaveCountry()">
+      <div class="mb-3">
+        <label for="countryName" class="form-label">Country Name</label>
+        <input type="text" class="form-control" id="countryName" [(ngModel)]="selectedCountry.CountryName" name="countryName" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Save changes</button>
+    </form>
+  </div>
+  <div class="modal-body" *ngIf="!selectedCountry">
+    <p>No country selected for editing.</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Close</button>
+  </div>
+</ng-template>
+
+<!-- Delete Modal Template -->
+<ng-template #deleteModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Delete Country</h5>
+    <button type="button" class="btn-close" (click)="modal.dismiss('Cross click')" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure you want to delete this country?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Close</button>
+    <button type="button" class="btn btn-danger" (click)="onConfirmDelete()">Delete</button>
+  </div>
+</ng-template>
+
+<!-- Create Modal Template -->
+<ng-template #createModal let-modal>
+  <div class="modal-header">
+    <h3 class="modal-title">Create Country</h3>
+    <button type="button" class="btn-close" (click)="modal.dismiss('Cross click')" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="onCreateCountry()">
+      <div class="mb-3">
+        <label for="newCountryName" class="form-label">Country Name</label>
+        <input type="text" class="form-control" id="newCountryName" [(ngModel)]="newCountryName" name="newCountryName" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Create Country</button>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Close</button>
+  </div>
+</ng-template>
